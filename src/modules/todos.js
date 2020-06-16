@@ -76,7 +76,7 @@ function todos(state = initialState, action) {
         todos: state.todos.filter((todo) => todo.id !== action.id),
       };
     default:
-      throw new Error(`Unhandled action type : ${action.type}`);
+      return state;
   }
 }
 
