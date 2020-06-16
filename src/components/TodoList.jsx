@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import TodoItem from './TodoItem';
+
 const TodoListBlock = styled.div`
   flex: 1;
   padding: 1.25rem 2rem;
@@ -11,7 +13,8 @@ const TodoListBlock = styled.div`
 function TodoList() {
   return (
     <TodoListBlock>
-      <span>todolist</span>
+      <TodoItem />
+      <TodoItem />
     </TodoListBlock>
   );
 }
