@@ -29,4 +29,14 @@ const TodosContainer = () => {
   );
 };
 
-export default TodosContainer;
+/**
+ * connet 함수를 사용하여 컨테이너 컴포넌트를 만들었을 경우,
+ * 해당 컨테이너 컴포넌트의 부모 컴포넌트가 리렌더링될 떄
+ * 해당 컨테이너의 props가 바뀌지 않았다면 리렌더링이
+ * 자동으로 방지되어 성능이 최적화 된다.
+ *
+ * 반면 useSelector를 사용하여 리덕스 상태를 조회했을 때는
+ * 이 최적화 작업이 자동으로 이루어지지 않으므로,
+ * 성능 최적화를 위해서는 React.memo를 컨테이너 컴포넌트에 사용해주어야 한다.
+ */
+export default React.memo(TodosContainer);
