@@ -25,10 +25,18 @@ const TodoTasks = styled.div`
 `;
 
 function TodoHead({ unDoneTasks }) {
+  const today = new Date();
+  const dayString = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+
   return (
     <TodoHeadBlock>
-      <TodoDate>2020년 6월 16일</TodoDate>
-      <TodoDay>화요일</TodoDay>
+      <TodoDate>{dayString}</TodoDate>
+      <TodoDay>{dayName}</TodoDay>
       <TodoTasks>할 일 {unDoneTasks}개 남음</TodoTasks>
     </TodoHeadBlock>
   );
