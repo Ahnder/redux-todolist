@@ -5,6 +5,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import TodoHead from './TodoHead';
+import TodoList from './TodoList';
+import TodoCreate from './TodoCreate';
+
 const TodoTemplateBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,8 +27,30 @@ const TodoTemplateBlock = styled.div`
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
 `;
 
-function TodoTemplate({ children }) {
-  return <TodoTemplateBlock>{children}</TodoTemplateBlock>;
+function TodoTemplate({
+  input,
+  todos,
+  onChangeInput,
+  onInsert,
+  onToggle,
+  onRemove,
+}) {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onInsert(input);
+    onChangeInput('');
+  };
+  const onChange = (e) => onChangeInput(e.target.value);
+
+  const unDoneTasks = todos.filter((todo) => !todo.done).length;
+
+  return (
+    <TodoTemplateBlock>
+      <TodoHead unDoneTasks={unDoneTasks} />
+      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+      <TodoCreate onSubmit={onSubmit} value={input} onChange={onChange} />
+    </TodoTemplateBlock>
+  );
 }
 
 export default TodoTemplate;

@@ -69,7 +69,7 @@ const CircleButton = styled.button`
     `}
 `;
 
-function TodoCreate() {
+function TodoCreate({ onSubmit, value, onChange }) {
   const [openInsertForm, setOpenInsertForm] = useState(false);
 
   const onToggle = () => setOpenInsertForm(!openInsertForm);
@@ -78,8 +78,13 @@ function TodoCreate() {
     <TodoCreateBlock>
       {openInsertForm && (
         <InsertFormBlock>
-          <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter를 누르세요" />
+          <InsertForm onSubmit={onSubmit}>
+            <Input
+              value={value}
+              onChange={onChange}
+              autoFocus
+              placeholder="할 일을 입력 후, Enter를 누르세요"
+            />
           </InsertForm>
         </InsertFormBlock>
       )}

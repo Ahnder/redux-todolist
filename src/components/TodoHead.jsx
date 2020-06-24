@@ -24,12 +24,12 @@ const TodoTasks = styled.div`
   font-weight: bold;
 `;
 
-function TodoHead() {
+function TodoHead({ unDoneTasks }) {
   return (
     <TodoHeadBlock>
       <TodoDate>2020년 6월 16일</TodoDate>
       <TodoDay>화요일</TodoDay>
-      <TodoTasks>할 일 2개 남음</TodoTasks>
+      <TodoTasks>할 일 {unDoneTasks}개 남음</TodoTasks>
     </TodoHeadBlock>
   );
 }
